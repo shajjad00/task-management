@@ -132,14 +132,15 @@ const Header = () => {
         color="teal"
         className="p-1 font-normal"
       >
-        <button className="bg-gradient-to-r from-[#ea8a81] py-2 to-[#c3392c] min-w-[150px] text-white p-[1px]">
-          <a
-            href="#contact"
-            className=""
-          >
-            About
-          </a>
-        </button>
+        <Link
+          to="/"
+          className=""
+        >
+          {" "}
+          <button className="bg-gradient-to-r from-[#ea8a81] py-2 to-[#c3392c] min-w-[150px] text-white p-[1px]">
+            Home
+          </button>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -147,14 +148,15 @@ const Header = () => {
         color="teal"
         className="p-1 font-normal"
       >
-        <button className="bg-gradient-to-r min-w-[150px] from-red-300 py-2 to-red-700 text-white p-[1px]">
-          <a
-            href="#projects"
-            className=""
-          >
-            Projects
-          </a>
-        </button>
+        <Link
+          to="/"
+          className=""
+        >
+          {" "}
+          <button className="bg-gradient-to-r from-[#ea8a81] py-2 to-[#c3392c] min-w-[150px] text-white p-[1px]">
+            Home
+          </button>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -162,14 +164,15 @@ const Header = () => {
         color="teal"
         className="p-1 font-normal"
       >
-        <button className="bg-gradient-to-r  min-w-[150px] from-red-300 py-2 to-red-700 text-white p-[1px]">
-          <a
-            href="#contact"
-            className=""
-          >
-            Contact
-          </a>
-        </button>
+        <Link
+          to="/"
+          className=""
+        >
+          {" "}
+          <button className="bg-gradient-to-r from-[#ea8a81] py-2 to-[#c3392c] min-w-[150px] text-white p-[1px]">
+            Home
+          </button>
+        </Link>
       </Typography>
     </ul>
   );
@@ -253,7 +256,12 @@ const Header = () => {
             <ProfileMenu />
           </div>
         </div>
-        <MobileNav open={openNav}>{navList}</MobileNav>
+        <MobileNav
+          className=" absolute top-16 w-full right-0"
+          open={openNav}
+        >
+          {navList}
+        </MobileNav>
       </Navbar>
     </div>
   );

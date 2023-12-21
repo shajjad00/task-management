@@ -1,33 +1,47 @@
 import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import loginAnimation from "../../../assets/animation/login.json";
+import useAuth from "../../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const { signIn } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
     const email = form.email.value;
-    console.log(name, email);
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((res) => {
+        if (res.user) {
+          toast.success("login successful");
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+      });
+    console.log(email, password);
   };
   return (
-    <div className=" bg-gray-200 mt-8 shadow-lg flex flex-col-reverse md:flex-row justify-center gap-5 items-center max-w-screen-xl mx-auto p-4">
+    <div className="bg-gray-200 rounded-md mt-8 shadow-lg flex flex-col-reverse md:flex-row justify-center gap-5 max-w-screen-xl mx-auto p-4">
       <div className=" mt-10">
         <form
           onSubmit={handleLogin}
-          className="space-y-4 md:space-y-6"
+          className="space-y-4 md:space-y-6 mt-10"
         >
           <div>
             <label
               htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block text-xl font-medium mb-2 text-gray-700 dark:text-white"
             >
               Email
             </label>
             <input
-              type="text"
+              type="email"
               name="email"
-              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg w-full p-3"
+              className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg w-full p-3"
               placeholder="Enter Your Email"
               required=""
             />
@@ -35,7 +49,7 @@ const Login = () => {
           <div>
             <label
               htmlFor="password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-xl font-medium text-gray-700 dark:text-white"
             >
               Password
             </label>
