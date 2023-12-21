@@ -14,7 +14,7 @@ const Banner = () => {
           Efficiency is doing things right; effectiveness is doing the right
           things
         </h2>
-        <Link to="dashboard">
+        <Link to="dashboard/todo">
           <button className=" text-lg bg-red-400 mt-2 px-10 py-2 text-white font-medium rounded-md">
             Let’s Explore
           </button>

@@ -4,6 +4,9 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Home/Login/Login";
 import Register from "../Pages/Home/Register/Register";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
+import ToDo from "../Pages/Dashboard/ToDo/ToDo";
+import OnGoing from "../Pages/Dashboard/OnGoing/OnGoing";
+import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 
 const Route = createBrowserRouter([
   {
@@ -27,6 +30,20 @@ const Route = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "todo",
+        element: <ToDo></ToDo>,
+      },
+      {
+        path: "ongoing",
+        element: <OnGoing></OnGoing>,
+      },
+      {
+        path: "add",
+        element: <AddTask></AddTask>,
+      },
+    ],
   },
 ]);
 
