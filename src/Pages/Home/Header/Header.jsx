@@ -10,13 +10,28 @@ import {
   Avatar,
   MenuItem,
 } from "@material-tailwind/react";
-import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
+
+  const { user, loading, userLogOut } = useAuth();
+
+  console.log(user);
+
+  const handleLogout = () => {
+    userLogOut()
+      .then(() => {
+        toast.success("signout successful");
+      })
+      .catch((error) => {
+        console.log(error.code);
+      });
+  };
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -31,27 +46,23 @@ const Header = () => {
       label: "My Profile",
     },
     {
-      label: "Edit Profile",
+      label: user?.displayName,
     },
     {
-      label: "Inbox",
-    },
-    {
-      label: "Help",
-    },
-    {
-      label: "Sign Out",
+      label: user?.email,
     },
   ];
 
-  //map
+  if (loading) {
+    return <p>loading...</p>;
+  }
 
   function ProfileMenu() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const closeMenu = () => setIsMenuOpen(false);
 
-    return (
+    return user?.email ? (
       <Menu
         open={isMenuOpen}
         handler={setIsMenuOpen}
@@ -68,37 +79,48 @@ const Header = () => {
               size="sm"
               alt="tania andrew"
               className="border border-gray-900 p-0.5"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src={user?.photoUrl}
             />
-            {isMenuOpen ? <SlArrowUp /> : <SlArrowDown />}
           </Button>
         </MenuHandler>
+
         <MenuList className="p-1">
-          {profileMenuItems.map(({ label }, key) => {
-            const isLastItem = key === profileMenuItems.length - 1;
+          {profileMenuItems.map(({ label }) => {
             return (
-              <MenuItem
-                key={label}
-                onClick={closeMenu}
-                className={`flex items-center gap-2 rounded ${
-                  isLastItem
-                    ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                    : ""
-                }`}
-              >
-                <Typography
-                  as="span"
-                  variant="small"
-                  className="font-normal"
-                  color={isLastItem ? "red" : "inherit"}
+              <>
+                <MenuItem
+                  key={label}
+                  onClick={closeMenu}
+                  className={`flex items-center gap-2 rounded`}
                 >
-                  {label}
-                </Typography>
-              </MenuItem>
+                  <Typography
+                    as="span"
+                    variant="small"
+                    className="font-normal"
+                    color={"inherit"}
+                  >
+                    {label}
+                  </Typography>
+                </MenuItem>
+              </>
             );
           })}
+          <Button
+            onClick={handleLogout}
+            as="span"
+            variant="small"
+            className="font-normal"
+            color="red"
+            fullWidth
+          >
+            Sign Out
+          </Button>
         </MenuList>
       </Menu>
+    ) : (
+      <Link to="/login">
+        <button>Login</button>
+      </Link>
     );
   }
 

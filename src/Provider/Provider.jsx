@@ -19,8 +19,6 @@ const Provider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
 
-  console.log(document.cookies);
-
   //create user
 
   const createUser = (email, password) => {
@@ -44,9 +42,12 @@ const Provider = ({ children }) => {
 
   //update profile
 
-  const profileUpdate = (obj) => {
+  const profileUpdate = (name, photoUrl) => {
     setLoading(false);
-    return updateProfile(auth.currentUser, obj);
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoUrl,
+    });
   };
 
   //google login
