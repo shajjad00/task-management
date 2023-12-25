@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import { BsListTask } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";
+import { Toaster } from "react-hot-toast";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
@@ -15,7 +16,7 @@ const Dashboard = () => {
         onClick={closeDrawer}
         to="add"
       >
-        <button className="px-10 mt-7 text-left py-1 transition-all duration-200 hover:bg-[#f1b7b2]  w-fit mx-auto flex justify-start items-center gap-2">
+        <button className="px-10 mt-7 text-left py-1 transition-all duration-200 hover:bg-[#f1b7b2]  w-fit mx-auto flex hover:rounded-md justify-start items-center gap-2">
           <CiCirclePlus className=" text-lg font-bold" />
           Add Task
         </button>
@@ -24,7 +25,7 @@ const Dashboard = () => {
         onClick={closeDrawer}
         to="todo"
       >
-        <button className="px-10 text-left py-1 transition-all duration-200 hover:bg-[#f1b7b2]  flex justify-start w-fit mx-auto items-center gap-2">
+        <button className="px-10 hover:rounded-md text-left py-1 transition-all duration-200 hover:bg-[#f1b7b2]  flex justify-start w-fit mx-auto items-center gap-2">
           <BsListTask className=" text-lg font-bold" />
           All Task
         </button>
@@ -56,6 +57,7 @@ const Dashboard = () => {
           <Outlet></Outlet>
         </div>
       </div>
+      <Toaster />
     </>
   );
 };

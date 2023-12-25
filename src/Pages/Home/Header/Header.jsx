@@ -110,7 +110,7 @@ const Header = () => {
             as="span"
             variant="small"
             className="font-normal"
-            color="red"
+            color="green"
             fullWidth
           >
             Sign Out

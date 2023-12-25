@@ -27,7 +27,11 @@ const AddTask = () => {
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
   const onSubmit = (data) => {
-    const taskData = { ...data, type: "ongoing" };
+    if (data.description.length < 3) {
+      toast.error("Please Write Proper Description");
+      return;
+    }
+    const taskData = { ...data, type: "todo" };
     axios.post("http://localhost:5000/task", taskData).then((res) => {
       console.log(res.data);
       if (res.data.insertedId) {
@@ -45,7 +49,7 @@ const AddTask = () => {
         animate={CUSTOM_ANIMATION}
       >
         <AccordionHeader
-          className=" w-fit no-underline"
+          className=" w-fit no-underline mx-auto"
           onClick={() => handleOpen(1)}
         >
           <FiPlus className="mr-2 transition-all duration-300 ease-in-out hover:rounded-full hover:text-white hover:bg-red-400" />
@@ -64,7 +68,7 @@ const AddTask = () => {
                 placeholder="Task Name"
                 {...register("title", { required: true })}
               />
-              {errors.title && <span>This field is required</span>}
+              {errors.title && <span>Title is required</span>}
             </div>
             <div>
               {" "}
@@ -75,20 +79,20 @@ const AddTask = () => {
                 placeholder="Description"
                 {...register("description", { required: true })}
               />
-              {errors.description && <span>This field is required</span>}
+              {errors.description && <span>Description is required</span>}
             </div>
-            <div className=" flex gap-5">
+            <div className=" flex flex-col md:flex-row gap-5">
               <div>
                 <input
                   type="date"
                   {...register("date", { required: true })}
                   className="w-40 border-gray-500 py-[5px] border-2 rounded-md px-3 placeholder:text-gray-700 text-gray-500 placeholder:text-lg"
                 />
-                {errors.date && <span>This field is required</span>}
+                {errors.date && <span>Date is required</span>}
               </div>
               <div>
                 <select
-                  className="border-gray-500 py-2 w-40 border-2 rounded-md px-3 ml-5"
+                  className="border-gray-500 py-2 w-40 border-2 rounded-md px-3 md:ml-5"
                   defaultValue={"priority"}
                   {...register("priority", { required: true })}
                 >
@@ -98,13 +102,13 @@ const AddTask = () => {
                   <option value=" high"> high</option>
                 </select>
                 {errors.priority && (
-                  <span className=" block">This field is required</span>
+                  <span className=" block">Priority is required</span>
                 )}
               </div>
               <div>
                 <button
                   onClick={() => handleOpen(0)}
-                  className=" bg-red-300 text-white ml-6 px-12 py-2 font-medium rounded-md"
+                  className=" bg-red-300 text-white md:ml-6 px-12 py-2 font-medium rounded-md"
                 >
                   Cancel
                 </button>

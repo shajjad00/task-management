@@ -41,7 +41,7 @@ const UpdateTask = () => {
   }
   return (
     <div>
-      <h2 className=" text-center text-4xl my-5 pb-4 border-b-2 max-w-sm mx-auto border-b-[#f1b7b2]">
+      <h2 className=" text-center text-4xl my-5 pb-4 border-b-2 max-w-sm mx-auto border-b-gray-500">
         Update Task
       </h2>
       <form
