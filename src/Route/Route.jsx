@@ -5,7 +5,6 @@ import Login from "../Pages/Home/Login/Login";
 import Register from "../Pages/Home/Register/Register";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import ToDo from "../Pages/Dashboard/ToDo/ToDo";
-import OnGoing from "../Pages/Dashboard/OnGoing/OnGoing";
 import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 import UpdateTask from "../Pages/Dashboard/UpdateTask/UpdateTask";
 import About from "../Pages/About/About";
@@ -45,10 +44,6 @@ const Route = createBrowserRouter([
       {
         path: "todo",
         element: <ToDo></ToDo>,
-      },
-      {
-        path: "ongoing",
-        element: <OnGoing></OnGoing>,
       },
       {
         path: "add",

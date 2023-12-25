@@ -41,6 +41,9 @@ const UpdateTask = () => {
   }
   return (
     <div>
+      <h2 className=" text-center text-4xl my-5 pb-4 border-b-2 max-w-sm mx-auto border-b-[#f1b7b2]">
+        Update Task
+      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className=" border-2 p-2 h-full rounded-md border-gray-300 max-w-2xl mx-auto"

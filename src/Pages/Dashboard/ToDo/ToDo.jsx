@@ -53,15 +53,17 @@ const ToDo = () => {
   };
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <div className="container grid gap-5 mt-4 grid-cols-2">
+      <div className="container grid gap-5 mt-4 grid-cols-3">
         <Droppable droppableId="activeTask">
           {(provided) => (
             <section
-              className=" bg-orange-500 p-2"
+              className="  p-2"
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              <h2>Active Tasks</h2>
+              <h2 className=" text-lg rounded-md bg-gray-500 py-2 pl-2 text-center font-medium text-white">
+                Todo Tasks
+              </h2>
               {ongoingTask?.map((item, idx) => {
                 const { _id, title, description, date } = item;
                 return (
@@ -75,16 +77,16 @@ const ToDo = () => {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
-                        className=" max-w-lg mx-auto mt-2 p-2 bg-blue-gray-200 text-gray-700"
+                        className=" max-w-lg rounded-md mx-auto mt-2 p-2 bg-gray-200 text-gray-700"
                       >
-                        <h2 className="text-gray-600 text-lg font-semibold">
+                        <h2 className="text-gray-800 text-lg font-semibold">
                           {title}
                         </h2>
-                        <p className=" text-gray-900 capitalize">
+                        <p className=" text-gray-600 text-sm capitalize">
                           {description}
                         </p>
                         <div className=" flex justify-between items-center">
-                          <p className=" text-deep-purple-400">{date}</p>
+                          <p className=" text-gray-500">{date}</p>
                           <Link to={`/dashboard/update/${_id}`}>
                             <CiEdit className="text-2xl cursor-pointer hover:bg-gray-300" />
                           </Link>
@@ -104,11 +106,13 @@ const ToDo = () => {
         >
           {(provided) => (
             <section
-              className=" bg-light-green-500 p-2"
+              className=" p-2"
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              <h2>Completed Task</h2>
+              <h2 className=" text-lg rounded-md text-white bg-deep-purple-400 py-2 pl-2 text-center font-medium">
+                On Going Tasks
+              </h2>
               {completedTask?.map((item, idx) => {
                 const { _id, title, description, date } = item;
                 return (
@@ -122,16 +126,65 @@ const ToDo = () => {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
-                        className=" max-w-lg mx-auto mt-2 p-2 bg-blue-gray-200 text-gray-700"
+                        className=" max-w-lg rounded-md mx-auto mt-2 p-2 bg-gray-200 text-gray-700"
                       >
-                        <h2 className="text-gray-600 text-lg font-semibold">
+                        <h2 className="text-gray-800 text-lg font-semibold">
                           {title}
                         </h2>
-                        <p className=" text-gray-900 capitalize">
+                        <p className=" text-gray-600 text-sm capitalize">
                           {description}
                         </p>
                         <div className=" flex justify-between items-center">
-                          <p className=" text-deep-purple-400">{date}</p>
+                          <p className=" text-gray-500">{date}</p>
+                          <Link to={`/dashboard/update/${_id}`}>
+                            <CiEdit className="text-2xl cursor-pointer hover:bg-gray-300" />
+                          </Link>
+                        </div>
+                      </div>
+                    )}
+                  </Draggable>
+                );
+              })}
+              {provided.placeholder}
+            </section>
+          )}
+        </Droppable>
+        <Droppable
+          droppableId="completedTask"
+          type="completed"
+        >
+          {(provided) => (
+            <section
+              className=" p-2"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              <h2 className=" text-lg rounded-md text-white bg-green-400 py-2 pl-2 text-center font-medium">
+                Completed Tasks
+              </h2>
+              {completedTask?.map((item, idx) => {
+                const { _id, title, description, date } = item;
+                return (
+                  <Draggable
+                    key={_id}
+                    draggableId={_id.toString()}
+                    index={idx}
+                  >
+                    {(provided) => (
+                      <div
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                        className=" max-w-lg rounded-md mx-auto mt-2 p-2 bg-gray-200 text-gray-700"
+                      >
+                        <h2 className="text-gray-800 text-lg font-semibold">
+                          {title}
+                        </h2>
+                        <p className=" text-gray-600 text-sm capitalize">
+                          {description}
+                        </p>
+                        <div className=" flex justify-between items-center">
+                          <p className=" text-gray-500">{date}</p>
                           <Link to={`/dashboard/update/${_id}`}>
                             <CiEdit className="text-2xl cursor-pointer hover:bg-gray-300" />
                           </Link>
