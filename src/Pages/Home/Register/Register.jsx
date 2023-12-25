@@ -14,8 +14,7 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const file = form.img.files[0];
-    const imgUrl = window.URL.createObjectURL(file);
+    const image = form.img.value;
 
     //auth related
 
@@ -36,7 +35,7 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         if (res.user) {
-          profileUpdate(name, imgUrl)
+          profileUpdate(name, image)
             .then(() => {
               // Profile updated!
               // ...
@@ -56,7 +55,6 @@ const Register = () => {
         toast.error(errorCode);
         console.log(errorCode, errorMessage);
       });
-    console.log(name, email, password, imgUrl);
   };
   return (
     <>
@@ -110,17 +108,15 @@ const Register = () => {
             <div>
               <label className=" text-lg text-gray-600">Your Image</label>
               <input
-                required=""
                 name="img"
-                placeholder="Name..."
+                placeholder="url..."
                 className=" w-full my-2 border-2 p-2 rounded-md"
-                type="file"
-                accept="image/*"
+                type="url"
               />
             </div>
             <button
               type="submit"
-              className="px-10 py-2 bg-red-400 text-white w-full rounded-md"
+              className="px-10 py-2 bg-red-300 text-white w-full rounded-md"
             >
               Create an account
             </button>

@@ -9,6 +9,7 @@ import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 import UpdateTask from "../Pages/Dashboard/UpdateTask/UpdateTask";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
+import PrivateRoute from "./PrivateRoute";
 
 const Route = createBrowserRouter([
   {
@@ -43,15 +44,27 @@ const Route = createBrowserRouter([
     children: [
       {
         path: "todo",
-        element: <ToDo></ToDo>,
+        element: (
+          <PrivateRoute>
+            <ToDo></ToDo>
+          </PrivateRoute>
+        ),
       },
       {
         path: "add",
-        element: <AddTask></AddTask>,
+        element: (
+          <PrivateRoute>
+            <AddTask></AddTask>
+          </PrivateRoute>
+        ),
       },
       {
         path: "update/:id",
-        element: <UpdateTask></UpdateTask>,
+        element: (
+          <PrivateRoute>
+            <UpdateTask></UpdateTask>
+          </PrivateRoute>
+        ),
       },
     ],
   },

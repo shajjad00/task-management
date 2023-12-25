@@ -77,9 +77,8 @@ const Header = () => {
             <Avatar
               variant="circular"
               size="sm"
-              alt="tania andrew"
               className="border border-gray-900 p-0.5"
-              src={user?.photoUrl}
+              src={"https://i.ibb.co/CHNCZWr/666201.png" || user?.photoUrl}
             />
           </Button>
         </MenuHandler>
@@ -119,7 +118,9 @@ const Header = () => {
       </Menu>
     ) : (
       <Link to="/login">
-        <button>Login</button>
+        <button className="bg-[#dc8c86] duration-200 transition-all hover:scale-90 py-2 min-w-[150px] text-white p-[1px]">
+          Login
+        </button>
       </Link>
     );
   }
@@ -137,7 +138,10 @@ const Header = () => {
           className=""
         >
           {" "}
-          <button className="bg-[#dc8c86] py-2 min-w-[150px] text-white p-[1px]">
+          <button
+            onClick={() => setOpenNav(false)}
+            className="bg-[#dc8c86] py-2 min-w-[150px] text-white p-[1px]"
+          >
             Home
           </button>
         </Link>
@@ -153,7 +157,10 @@ const Header = () => {
           className=""
         >
           {" "}
-          <button className="bg-[#dc8c86] min-w-[150px] text-white py-2 p-[1px]">
+          <button
+            onClick={() => setOpenNav(false)}
+            className="bg-[#dc8c86] min-w-[150px] text-white py-2 p-[1px]"
+          >
             Dashboard
           </button>
         </Link>
@@ -165,12 +172,15 @@ const Header = () => {
         className="p-1 font-normal"
       >
         <Link
-          to="/"
+          to="/about"
           className=""
         >
           {" "}
-          <button className="bg-[#dc8c86] min-w-[150px] text-white py-2 p-[1px]">
-            Reports
+          <button
+            onClick={() => setOpenNav(false)}
+            className="bg-[#dc8c86] min-w-[150px] text-white py-2 p-[1px]"
+          >
+            About
           </button>
         </Link>
       </Typography>

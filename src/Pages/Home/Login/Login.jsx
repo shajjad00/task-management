@@ -1,11 +1,12 @@
 import Lottie from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginAnimation from "../../../assets/animation/login.json";
 import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { signIn } = useAuth();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,13 +17,13 @@ const Login = () => {
       .then((res) => {
         if (res.user) {
           toast.success("login successful");
+          navigate("/");
         }
       })
       .catch((error) => {
         const errorCode = error.code;
         console.log(errorCode);
       });
-    console.log(email, password);
   };
   return (
     <div className="bg-gray-200 rounded-md mt-8 shadow-lg flex flex-col-reverse md:flex-row justify-center gap-5 max-w-screen-xl mx-auto p-4">
@@ -64,11 +65,11 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="px-10 py-2 bg-red-400 text-white w-full rounded-md"
+            className="px-10 py-2 bg-red-300 text-white w-full rounded-md"
           >
             Login
           </button>
-          <p className="text-sm font-light text-gray-500 dark:text-gray-400 mb-5">
+          <p className="text-sm font-light text-gray-500  mb-5">
             Already have an account?{" "}
             <Link
               className="font-medium text-teal-400 hover:underline dark:text-blue-500 mb-5"
