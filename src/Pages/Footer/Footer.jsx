@@ -30,13 +30,7 @@ const Footer = () => {
               About
             </Link>
             <Link
-              href="#"
-              className="text-white text-lg hover:text-gray-300 mx-2"
-            >
-              Features
-            </Link>
-            <Link
-              href="#"
+              to="contact"
               className="text-white text-lg hover:text-gray-300 mx-2"
             >
               Contact
@@ -64,7 +58,7 @@ const Footer = () => {
               <FaInstagram></FaInstagram>
             </a>
           </div>
-          <p className="mt-7 text-base">© 2023 Task Management, LLC</p>
+          <p className="mt-7 text-base">© 2023 TaskSync Hub, LLC</p>
         </div>
       </div>
     </footer>

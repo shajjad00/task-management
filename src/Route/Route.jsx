@@ -9,6 +9,7 @@ import OnGoing from "../Pages/Dashboard/OnGoing/OnGoing";
 import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 import UpdateTask from "../Pages/Dashboard/UpdateTask/UpdateTask";
 import About from "../Pages/About/About";
+import Contact from "../Pages/Contact/Contact";
 
 const Route = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const Route = createBrowserRouter([
       {
         path: "about",
         element: <About></About>,
+      },
+      {
+        path: "contact",
+        element: <Contact></Contact>,
       },
     ],
   },
