@@ -137,8 +137,24 @@ const Header = () => {
           className=""
         >
           {" "}
-          <button className="bg-gradient-to-r from-[#ea8a81] py-2 to-[#c3392c] min-w-[150px] text-white p-[1px]">
+          <button className="bg-[#dc8c86] py-2 min-w-[150px] text-white p-[1px]">
             Home
+          </button>
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="teal"
+        className="p-1 font-normal"
+      >
+        <Link
+          to="dashboard/todo"
+          className=""
+        >
+          {" "}
+          <button className="bg-[#dc8c86] min-w-[150px] text-white py-2 p-[1px]">
+            Dashboard
           </button>
         </Link>
       </Typography>
@@ -153,24 +169,8 @@ const Header = () => {
           className=""
         >
           {" "}
-          <button className="bg-gradient-to-r from-[#ea8a81] py-2 to-[#c3392c] min-w-[150px] text-white p-[1px]">
-            Home
-          </button>
-        </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="teal"
-        className="p-1 font-normal"
-      >
-        <Link
-          to="/"
-          className=""
-        >
-          {" "}
-          <button className="bg-gradient-to-r from-[#ea8a81] py-2 to-[#c3392c] min-w-[150px] text-white p-[1px]">
-            Home
+          <button className="bg-[#dc8c86] min-w-[150px] text-white py-2 p-[1px]">
+            Reports
           </button>
         </Link>
       </Typography>
@@ -201,7 +201,7 @@ const Header = () => {
               >
                 <path
                   d="M492.692 223.646 394.345 52.979a53.123 53.123 0 0 0-46.08-26.667H151.572a53.12 53.12 0 0 0-46.08 26.027L7.145 223.006a53.333 53.333 0 0 0 0 53.333l98.347 170.667a53.332 53.332 0 0 0 46.08 26.453h196.693a53.334 53.334 0 0 0 46.08-25.813l98.347-170.667a53.76 53.76 0 0 0 0-53.333z"
-                  fill="rgb(13 148 136)"
+                  fill="rgb(201, 123, 118)"
                 ></path>
                 <text
                   x="150"
@@ -209,7 +209,7 @@ const Header = () => {
                   fill="white"
                   className=" text-[300px]"
                 >
-                  S
+                  T
                 </text>
               </svg>
             </Link>
@@ -225,14 +225,15 @@ const Header = () => {
               {openNav ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  fill="rgb(201, 123, 118)"
                   className="h-6 w-6"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  stroke="#C97B76"
                   strokeWidth={2}
                 >
                   <path
                     strokeLinecap="round"
+                    fill="rgb(201, 123, 118)"
                     strokeLinejoin="round"
                     d="M6 18L18 6M6 6l12 12"
                   />
@@ -241,12 +242,13 @@ const Header = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
+                  fill="rgb(201, 123, 118)"
+                  stroke="#C97B76"
                   strokeWidth={2}
                 >
                   <path
                     strokeLinecap="round"
+                    fill="rgb(201, 123, 118)"
                     strokeLinejoin="round"
                     d="M4 6h16M4 12h16M4 18h16"
                   />
@@ -256,12 +258,7 @@ const Header = () => {
             <ProfileMenu />
           </div>
         </div>
-        <MobileNav
-          className=" absolute top-16 w-full right-0"
-          open={openNav}
-        >
-          {navList}
-        </MobileNav>
+        <MobileNav open={openNav}>{navList}</MobileNav>
       </Navbar>
     </div>
   );

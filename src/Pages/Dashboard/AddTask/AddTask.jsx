@@ -20,6 +20,7 @@ const AddTask = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const [open, setOpen] = useState(0);
@@ -31,6 +32,7 @@ const AddTask = () => {
       console.log(res.data);
       if (res.data.insertedId) {
         toast.success("task added successful");
+        reset();
       }
     });
   };

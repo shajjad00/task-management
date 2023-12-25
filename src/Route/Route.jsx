@@ -7,6 +7,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import ToDo from "../Pages/Dashboard/ToDo/ToDo";
 import OnGoing from "../Pages/Dashboard/OnGoing/OnGoing";
 import AddTask from "../Pages/Dashboard/AddTask/AddTask";
+import UpdateTask from "../Pages/Dashboard/UpdateTask/UpdateTask";
 
 const Route = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const Route = createBrowserRouter([
       {
         path: "add",
         element: <AddTask></AddTask>,
+      },
+      {
+        path: "update/:id",
+        element: <UpdateTask></UpdateTask>,
       },
     ],
   },
