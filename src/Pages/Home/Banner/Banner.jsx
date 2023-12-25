@@ -14,7 +14,7 @@ const Banner = () => {
           Start Organizing Your Tasks Now.
         </h2>
         <Link to="dashboard/todo">
-          <button className="mt-4 text-lg border-2 border-[#c15b63] px-10 py-2 text-[#c15b63] font-medium rounded-md">
+          <button className="mt-4 text-lg border-2 border-white hover:text-xl hover:scale-105 duration-300 transition-all px-10 py-2 text-white font-medium rounded-md">
             Let’s Start
           </button>
         </Link>
