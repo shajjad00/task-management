@@ -8,6 +8,7 @@ import ToDo from "../Pages/Dashboard/ToDo/ToDo";
 import OnGoing from "../Pages/Dashboard/OnGoing/OnGoing";
 import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 import UpdateTask from "../Pages/Dashboard/UpdateTask/UpdateTask";
+import About from "../Pages/About/About";
 
 const Route = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const Route = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "about",
+        element: <About></About>,
       },
     ],
   },

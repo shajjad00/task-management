@@ -24,7 +24,7 @@ const Footer = () => {
               Home
             </Link>
             <Link
-              href="#"
+              to="about"
               className="text-white text-lg hover:text-gray-300 mx-2"
             >
               About
